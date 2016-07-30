@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head><title>nypl</title></head>
+  <body>
+    <h1>NYPL Image data</h1>
+    <h2>{{'{0:,}'.format(images.count())}} images</h2>
+    <p>
+{{'{0:,}'.format(prefixes|length)}} prefixes
+({{'{0:,}'.format(pmatches|length)}} w/matches)
+    </p>
+    <ol>
+{% for key in (psets.keys()|sort)[:3] %}
+<li>{{key}}
+  <ul>
+{% for image in psets[key]|sort %}
+<li>{{image['fname']}} {{image['matches']}}
+{% endfor %}
+  </ul>
+{% endfor %}
+    </ol>
+  </body>
+</html>
